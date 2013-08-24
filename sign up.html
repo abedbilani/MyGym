@@ -10,12 +10,12 @@ Version    : 1.0
 Released   : 20120818
 
 -->
-<html xmlns="http://www.w3.org/1999/xhtml">
-<? php
-session_start();
-include('mygymdb.php');
-
-?>
+<html xmlns="http://www.w3.org/1999/xhtml"/>
+    <?php
+ session_start();
+ include('mygymdbConnect.php');
+include('SignUp.php');
+?><
 <html>
  <head>
      <title> MyGym</title>
@@ -23,13 +23,13 @@ include('mygymdb.php');
         <p><h2>MY<br/> 
                 GYM 
                <br/></h2></p></div>
-          <div style="position: absolute ;left:  200px; top: 20px;"><img  src="header2.jpg" height="200" width="750"
+          <div style="position: absolute ;left:  200px; top: 20px;"><img  src="images\header2.jpg" height="200" width="750"
                           /> </div>
           <div style="position:absolute;top:37%;left:35%"/>
       <link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" />         
   
       <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
-      <a href="index.php" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Home |</a>
+      <a href="home.php" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Home |</a>
       <a href="About.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">About |</a>
       <a href="sign up.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Sign up |</a>
       <a href="Activities.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Activities |</a>
@@ -37,7 +37,7 @@ include('mygymdb.php');
       <a href="classes.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Classes |</a>
       <a href="Training.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Train |</a>   
    
-      <script language= "javascript">
+      <script >
           function CheckFields(){
               var pass1=document.getElementById("tPass1").value;
               var pass2=document.getElementById("tPass2").value;
@@ -50,19 +50,20 @@ include('mygymdb.php');
               
   var msg="";
               
-              if (pass1<8){alert (msg= msg+ " your password must be at least 8 characters \n\ ");
+              if (pass1.length<8){alert (msg= msg+ " your password must be at least 8 characters \n\ ");
               return 0;
         }
-              if (pass2 !=pass1){
+              if (pass2 !==pass1){
+                 
                   alert(msg= msg+ " your passwords do not match \n\ ");
                   return 0;
               }    
-              if (nom<2 ){
+              if (nom.length<2 ){
                   alert ( msg= msg+ "your name is too short\n\
       must be between 2 and 8 letters " );
             return 0;
               } 
-              if (nom>8 ){
+              if (nom.length>8 ){
                   alert ( msg= msg+ "your name is too long  \n\
       must be between 2 and 8 letters ");
             return 0;
@@ -71,7 +72,7 @@ include('mygymdb.php');
                   alert ( msg= msg+ " choose your gender \n\ ");
                   return 0;
               }      
-              if(gender1== checked&& gender2==checked){
+              if(gender1=== checked&& gender2===checked){
                   alert (msg= msg+ "choose one gender" );
            return 0;   
         }
@@ -80,6 +81,7 @@ include('mygymdb.php');
                   alert (msg=msg+ "enter your propre wheight \n\ ");
               return 0;
         }
+             
              
                  document.forms["formes"].submit();     
  return msg;
@@ -90,7 +92,7 @@ include('mygymdb.php');
       
  </head>
     <body background="red.jpg">
-        <form name="formes" id="formes" action="signupdata.php" method="post">
+        <form name="formes" id="formes" action="SignUP.php" method="post">
 
             </br>
                     
@@ -124,28 +126,29 @@ include('mygymdb.php');
                     </tr>    
                     <tr>
                         <td>Password </td>
-                        <td><input type="password" name="pass1" id="tPass1" maxlength="8"/></td>
+                        <td><input type="password" name="tPass1" id="tPass1" maxlength="8"/></td>
                     </tr>
                     <tr>
                         <td>Confirm Password </td>
-                        <td><input type="password" name="pass2" id="tPass2" maxlength="8"/></td>
+                        <td><input type="password" name="tPass2" id="tPass2" maxlength="8"/></td>
                     </tr>
                     <tr>
                         <td>Email </td>
-                        <td><input type="text" name="mail" id="tEmail" maxlength="50"></td>
+                        <td><input type="text" name="tEmail" id="tEmail" maxlength="50"/></td>
                     </tr>
                     <tr>
                         <td>Weight </td>
-                        <td><input type="text" id="tWeight" name="weight" maxlength="8"/>
+                        <td><input type="text" id="tWeight" name="tWeight" maxlength="8"/>
                         </td>    
                     </tr>
                     <tr>
                         <td>Gender : </td>
-                        <td> Male <input type="checkbox" id="tGender1" name="male"/> Female<input type="checkbox" id="tGender2" />     
+                        <td> Male <input type="checkbox" id="rbMale" name="rbMale"/>
+                            Female<input type="checkbox" id="rbFemale" name="rbFemale" />     
                     </tr>
                     <tr>
                         <td>City </td>
-                        <td><select id="tCity" name="tcity" style="width:100px">
+                        <td><select id="tCity" name="tCity" style="width:100px">
                                 <option value="brt" selected>Beirut</option>
                                 <option value="cr">Cairo</option>
                                 <option value="rd">Riad</option>
@@ -158,7 +161,7 @@ include('mygymdb.php');
                     </tr>
                     <tr>
                         <td>Country </td>
-                        <td><select id="tCountry" name="tcountry" style="width:100px">
+                        <td><select id="tCountry" name="tCountry" style="width:100px">
                                 <option value="lb" selected>Lebanon</option>
                                 <option value="eg">Egypt</option>
                                 <option value="ks">KSA</option>
@@ -171,17 +174,17 @@ include('mygymdb.php');
                     </tr>
                     <tr>
                         <td>Address</td>
-                        <td><textarea id="taAddress" name="taAddress" cols="30" rows="4" maxlength="500"></textarea>
+                        <td><textarea id="tAddress" name="tAddress" cols="30" rows="4" maxlength="500"></textarea>
 			</td>
 		</tr>
                     <tr>
                         <td>Cart Id </td>>
-                        <td><input type="text" id="tCart_id" name="cartid"/>
+                        <td><input type="text" id="tCart_id" name="tCart_id"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="button" value="Save" onclick="CheckFields();"/></td>
+                            <input type="submit" value="Save" onclick="CheckFields();" /></td>
                         <td></td>
                         <td><input type="reset" value="Clear"/></td>
                     </tr>
@@ -189,7 +192,8 @@ include('mygymdb.php');
                 </br>
                 </br>
                 
-        </form></body>
+        </form>
+    </body>
 </html>
                         
                         

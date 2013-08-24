@@ -1,7 +1,16 @@
 <?php
+include 'mygymdbConnect.php';
+$link = mysql_connect('localhost', 'root','');
+if (!$link) {
+    die('Not connected : ' . mysql_error());
+}
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+// make foo the current db
+$db_selected = mysql_select_db("mygym", $link);
+if (!$db_selected) {
+    die ('Can\'t use foo : ' . mysql_error());
+}else
+    die('net');
+ 
+
 ?>
