@@ -36,68 +36,69 @@ Released   : 20120818
                 <a href="classes.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Classes |</a>
                 <a href="Training.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Train |</a>   
             </div>
-            <script language="javascipt">
-            function getprice(va){
-                var x=va;
-                var val=document.getElementById("subscriptype");
-                if(val===1)
-                    
-		document.getElementById("tprice").value="20$";
-        else 	if(val===2)
-		document.getElementById("tprice").value="50$";
-	else
-	document.getElementById("tprice").value="300$";
-            }</script>
+          <!--  <script language="javascipt">
+                function getprice() {
+                    var prix = document.getElementById("subscriptype").selectedIndex;
+                    if (prix == 0) {
+                        document.getElementById("tprice").value = "20$";
+                    }
+                    if (prix == 1) {
+                        document.getElementById("tprice").value = "50$";
+                    }
+                    if (prix == 2) {
+                        document.getElementById("tprice").value = "150$";
+                    }
+                }</script>-->
         </head>
-        <div style="position: absolute;top: 650px;left: 100px;">
-            <form  action="buydaysdata.php" method="post">
+        <body onload="getprice();">
 
-                <table>
-                    <tr>
-                        <td>Choose your subscription </td>
-                        <td><?php
-                            $query = mysql_query("SELECT `Subscription_type`, `Subscription_name` FROM `subscription_type`");
-                            echo "<select name='subscriptype' id='subscriptype' onchange='getprice()'>";
-                            while($row=  mysql_fetch_array($query)){
-                                $id=$row['Subscription_type'];                             
-                               $name=$row['Subscription_name'];
-                            echo "<option id='$id'>$name days</option>";
-                            }
-                            echo "</select>";
+            <div style="position: absolute;top: 650px;left: 100px;">
 
-                            echo "<script >
-            function getprice(){
-                
-var val=document.getElementById('subscriptype').; print val;
- </script>";
-                            ?>
-                        </td>
+                <form  action="buydaysdata.php" method="post" name="form1">
 
-                    </tr>
-                    <tr>
-                        <td>
-                            Card id  
-                        </td>
-                        <td><input type="text" id="card_id" name="card_id"/></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Pay using visa
-                        </td>
-                        <td><input type="text" id="pay" name="pay"/></td>
-                    </tr>
-                    <tr><td>Price</td>
-                        <td><input type="text" readonly="readonly" class="input" name="tprice" id="tprice" value=""/> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" value="buy" align="center"/></td>
+                    <table>
+                        <tr>
+                            <td><b>Choose your subscription </b></td>
+                            <td><?php
+                                $query = mysql_query("SELECT `Subscription_type`, `Subscription_name` FROM `subscription_type`");
+                                echo "<select name='subscriptype' id='subscriptype' onchange='getprice()' >";
+                                while ($row = mysql_fetch_array($query)) {
+                                    $id = $row['Subscription_type'];
+                                    $name = $row['Subscription_name'];
+                                    echo "<option value='$id'>$name </option>";
+                                }
+                                echo "</select>";
+                                ?>
+                            </td>
 
-                    </tr>
-                </table>
-
-            </form>
-        </div>
+                        </tr>
+                        <tr>
+                            <td><b>
+                                    Card id </b>
+                            </td>
+                            <td><input type="text" id="card_id" name="card_id" required/></td>
+                        </tr><tr>
+                            <td><b>Number of Days</b>
+                            </td>
+                            <td><input type="text" name="day" id="day" required>
+                                    <script language="javascript">
+                if (document.getElementById("day").value = "")
+                    alert(' please enter the number of days you want to subscribe')</script>
+                                </input></td>
+                        </tr>
+                       
 
 
+                        <tr>
+                            <td><input type="submit" value="Submit" align="center" onclick="getprice()"/></td>
+
+                        </tr>
+                    </table>
+
+                </form>
+
+            </div>
+        </body>
+
+        
     </html>
