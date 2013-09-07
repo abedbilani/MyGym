@@ -10,190 +10,176 @@ Version    : 1.0
 Released   : 20120818
 
 -->
-<html xmlns="http://www.w3.org/1999/xhtml"/>
-    <?php
- session_start();
- include('mygymdbConnect.php');
+<html xmlns="http://www.w3.org/1999/xhtml">
+<?php
+session_start();
+include('mygymdbConnect.php');
 include('SignUp.php');
 ?><
 <html>
- <head>
-     <title> MyGym</title>
-    <div style="position :absolute;top:20px;left:40px">
-        <p><h2>MY<br/> 
-                GYM 
-               <br/></h2></p></div>
-          <div style="position: absolute ;left:  200px; top: 20px;"><img  src="images\header2.jpg" height="200" width="750"
-                          /> </div>
-          <div style="position:absolute;top:37%;left:35%"/>
-      <link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" />         
-  
-      <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
-      <a href="home.php" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Home |</a>
-      <a href="About.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">About |</a>
-      <a href="sign up.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Sign up |</a>
-      <a href="Activities.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Activities |</a>
-      <a href="Trainers.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Trainers |</a>
-      <a href="classes.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Classes |</a>
-      <a href="Training.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Train |</a>   
-   
-      <script >
-          function CheckFields(){
-              var pass1=document.getElementById("tPass1").value;
-              var pass2=document.getElementById("tPass2").value;
-              var nom=document.getElementById("tFName").value;
-              var prenom=document.getElementById("tLname").value;
-              var gender1=document.getElementById("tGender1").value;
-              var gender2=document.getElementById("tGender2").value;
-              var email=document.getElementById("tEmail").value;
-              var wheight=document.getElementById("twheight").value;
-              
-  var msg="";
-              
-              if (pass1.length<8){alert (msg= msg+ " your password must be at least 8 characters \n\ ");
-              return 0;
-        }
-              if (pass2 !==pass1){
-                 
-                  alert(msg= msg+ " your passwords do not match \n\ ");
-                  return 0;
-              }    
-              if (nom.length<2 ){
-                  alert ( msg= msg+ "your name is too short\n\
-      must be between 2 and 8 letters " );
-            return 0;
-              } 
-              if (nom.length>8 ){
-                  alert ( msg= msg+ "your name is too long  \n\
-      must be between 2 and 8 letters ");
-            return 0;
-              }
-              if (gender1 !== checked && gender2 !== checked){
-                  alert ( msg= msg+ " choose your gender \n\ ");
-                  return 0;
-              }      
-              if(gender1=== checked&& gender2===checked){
-                  alert (msg= msg+ "choose one gender" );
-           return 0;   
-        }
+    <head>
+        <title> MyGym</title>
+        <div style="position :absolute;top:20px;left:40px">
+            <p><h2>MY<br/> 
+                    GYM 
+                    <br/></h2></p></div>
+        <div style="position: absolute ;left:  200px; top: 20px;"><img  src="images\header2.jpg" height="200" width="750"
+                                                                        /> </div>
+        <div style="position:absolute;top:37%;left:35%"/>
+        <link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" />         
+
+        <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+        <a href="home.php" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Home |</a>
+        <a href="About.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">About |</a>
+        <a href="sign up.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Sign up |</a>
+        <a href="Activities.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Activities |</a>
+        <a href="Trainers.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Trainers |</a>
+        <a href="classes.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Classes |</a>
+        <a href="Training.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Train |</a>   
+
           
-              if (wheight<2 || wheight>3){
-                  alert (msg=msg+ "enter your propre wheight \n\ ");
-              return 0;
+<script language="javascript">
+function checkDetails(){
+var pass=document.getElementById("tPass1").value;
+var pass2=document.getElementById("tPass2").value;
+var firstname=document.getElementById("tFName").value;
+var lastname=document.getElementById("tLName").value;
+var wheight=document.getElementById("tWeight").value;
+var male=document.getElementById("rbMale").checked;
+var female=document.getElementById("rbFemale").checked;
+
+if (pass.length<8 ){
+	alert("Your password must be atleast 8 characters long");
+	return 0;
+	}
+if (pass!=pass2){
+	alert("Your passwords do not match");
+	return 0;
+	}
+if (firstname.length<1){
+	alert("please fill in your first name");
+	return 0;
+	}
+if (lastname.length<1){
+	alert("please fill in your last name");
+	return 0;
+	}
+if (isnan(wheight)==true){alert("please enter your wheight in numbers");
+   return 0;
         }
-             
-             
-                 document.forms["formes"].submit();     
- return msg;
-    }
-     
-     
-            </script>
-      
- </head>
-    <body background="red.jpg">
-        <form name="formes" id="formes" action="SignUP.php" method="post">
+        if((male==true)&&(female==true)){
+            alert("please choose your gender");
+            return 0;
+        }
+        if((male==false)&&(female==false)){
+            alert("please choose your gender");
+            return 0;
+        }
+        
+	document.forms["frm"].submit();
+}
+</script>
+
+    </head></html>
+</html>
+    <body background="red.jpg" onload="CheckFields()">
+        <form name="frm" id="frm" action="SignUP.php" method="post">
 
             </br>
-                    
-<div style="position:absolute;down:300px;left:1020px">
-</div>
-                <p class="one">
-                    <table  id="tabnote">
-                        <tr>
-                            <td><p align="left"><b>
-                  Welcome to <b>MY GYM </b>Registration.</br>
-                  Please enter your information below to </br>
-                  join us and start your training</br>
-                  To sign in  <a href="index.php">Click Here </a>              
-                                    </b>
-                                </p>
-                            </td>
-                        </tr>
-                    </table>
-                </p>
-                <table id="tabinfo">
-                    <tr><td>First Name </td>
-                        <td><input type="text" name="tFName" id="tFName" selected="selected" </td>
-                    </tr>
+
+            <div style="position:absolute;down:300px;left:1020px">
+            </div>
+            <p class="one">
+                <table  id="tabnote">
                     <tr>
-                        <td>Last Name </td>
-                        <td><input type="text" name="tLName" id="tLName" maxlength="20"/></td>
-                    </tr>
-                    <tr>
-                        <td>User <td><input type="text" id="tUser" maxlength="10" name="tUser"/></td>
+                        <td><p align="left"><b>
+                                    Welcome to <b>MY GYM </b>Registration.</br>
+                                    Please enter your information below to </br>
+                                    join us and start your training</br>
+                                    To sign in  <a href="Home.php">Click Here </a>              
+                                </b>
+                            </p>
                         </td>
-                    </tr>    
-                    <tr>
-                        <td>Password </td>
-                        <td><input type="password" name="tPass1" id="tPass1" maxlength="8"/></td>
-                    </tr>
-                    <tr>
-                        <td>Confirm Password </td>
-                        <td><input type="password" name="tPass2" id="tPass2" maxlength="8"/></td>
-                    </tr>
-                    <tr>
-                        <td>Email </td>
-                        <td><input type="text" name="tEmail" id="tEmail" maxlength="50"/></td>
-                    </tr>
-                    <tr>
-                        <td>Weight </td>
-                        <td><input type="text" id="tWeight" name="tWeight" maxlength="8"/>
-                        </td>    
-                    </tr>
-                    <tr>
-                        <td>Gender : </td>
-                        <td> Male <input type="checkbox" id="rbMale" name="rbMale"/>
-                            Female<input type="checkbox" id="rbFemale" name="rbFemale" />     
-                    </tr>
-                    <tr>
-                        <td>City </td>
-                        <td><select id="tCity" name="tCity" style="width:100px">
-                                <option value="brt" selected>Beirut</option>
-                                <option value="cr">Cairo</option>
-                                <option value="rd">Riad</option>
-                                <option value="br">Berlin</option>
-                                <option value="pr">Paris</option>
-                                <option value="ny">New York</option>
-                                <option value="ld">London</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Country </td>
-                        <td><select id="tCountry" name="tCountry" style="width:100px">
-                                <option value="lb" selected>Lebanon</option>
-                                <option value="eg">Egypt</option>
-                                <option value="ks">KSA</option>
-                                <option value="gr">Germany</option>
-                                <option value="fr">France</option>
-                                <option value="us">USA</option>
-                                <option value="uk">Britain</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Address</td>
-                        <td><textarea id="tAddress" name="tAddress" cols="30" rows="4" maxlength="500"></textarea>
-			</td>
-		</tr>
-                    <tr>
-                        <td>Cart Id </td>>
-                        <td><input type="text" id="tCart_id" name="tCart_id"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="submit" value="Save" onclick="CheckFields();" /></td>
-                        <td></td>
-                        <td><input type="reset" value="Clear"/></td>
                     </tr>
                 </table>
-                </br>
-                </br>
-                
+            </p>
+            <table id="tabinfo">
+                <tr><td>First Name </td>
+                    <td><input type="text" name="tFName" id="tFName" required /></td>
+                </tr>
+                <tr>
+                    <td>Last Name </td>
+                    <td><input type="text" name="tLName" id="tLName" maxlength="20" required/></td>
+                </tr>
+                <tr>
+                    <td>User <td><input type="text" id="tUser" maxlength="10" name="tUser" required/></td>
+                    </td>
+                </tr>    
+                <tr>
+                    <td>Password </td>
+                    <td><input type="password" name="tPass1" id="tPass1" maxlength="8" required/></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password </td>
+                    <td><input type="password" name="tPass2" id="tPass2" maxlength="8" required/></td>
+                </tr>
+                <tr>
+                    <td>Email </td>
+                    <td><input type="text" name="tEmail" id="tEmail" maxlength="50" required/></td>
+                </tr>
+                <tr>
+                    <td>Weight </td>
+                    <td><input type="text" id="tWeight" name="tWeight" maxlength="8" required/>
+                    </td>    
+                </tr>
+                <tr>
+                    <td>Gender : </td>
+                    <td> Male <input type="checkbox" id="rbMale" name="rbMale" />
+                        Female<input type="checkbox" id="rbFemale" name="rbFemale" />     
+                </tr>
+                <tr>
+                    <td>City </td>
+                    <td><select id="tCity" name="tCity" style="width:100px">
+                            <option value="brt" selected>Beirut</option>
+                            <option value="cr">Cairo</option>
+                            <option value="rd">Riad</option>
+                            <option value="br">Berlin</option>
+                            <option value="pr">Paris</option>
+                            <option value="ny">New York</option>
+                            <option value="ld">London</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country </td>
+                    <td><select id="tCountry" name="tCountry" style="width:100px">
+                            <option value="lb" selected>Lebanon</option>
+                            <option value="eg">Egypt</option>
+                            <option value="ks">KSA</option>
+                            <option value="gr">Germany</option>
+                            <option value="fr">France</option>
+                            <option value="us">USA</option>
+                            <option value="uk">Britain</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><textarea id="tAddress" name="tAddress" cols="30" rows="4" maxlength="500" required></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cart Id </td>>
+                    <td><input type="text" id="tCart_id" name="tCart_id" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" onClick="checkDetails();" value="Save"/></td>
+                    <td></td>
+                    <td><input type="reset" value="Clear"/></td>
+                </tr>
+            </table>
         </form>
     </body>
-</html>
-                        
-                        
+

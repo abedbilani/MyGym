@@ -12,84 +12,91 @@ Released   : 20120818
 -->
 <html xmlns="http://www.w3.org/1999/xhtml"/>
 <html>
- <head>
-     <title> MyGym</title>
-    <div style="position :absolute;top:20px;left:40px">
-        <p><h2>MY<br/> 
-                GYM 
-               <br/></h2></p></div>
-          <div style="position: absolute ;left:  200px; top: 20px;"><img  src="images\header2.jpg" height="200" width="750"
-                          /> </div>
-        
-      <link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" />         
-  
-      <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
-<?php
+    <head>
+        <title> MyGym</title>
+        <div style="position :absolute;top:20px;left:40px">
+            <p><h2>MY<br/> 
+                    GYM 
+                    <br/></h2></p></div>
+        <div style="position: absolute ;left:  200px; top: 20px;"><img  src="images\header2.jpg" height="200" width="750"
+                                                                        /> </div>
 
+        <link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" />         
 
-$connex= mysql_connect("localhost","root","");
-if($connex==false){
-    die (" could not connect to data base ");
-}
-$select=  mysql_select_db("mygym",$connex);
+        <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+        <?php
+        $connex = mysql_connect("localhost", "root", "");
+        if ($connex == false) {
+            die(" could not connect to data base ");
+        }
+        $select = mysql_select_db("mygym", $connex);
         if (!$select) {
-    die ("Can\'t use foo : " . mysql_error());
-}
+            die("Can\'t use foo : " . mysql_error());
+        }
 
-$Firstname=$_POST["tFName"]; 
-$Lastname=$_POST["tLName"];
-$Username=$_POST["tUser"];
-$Password=$_POST["tPass1"];
-$Email=$_POST["tEmail"];
-$Weight=$_POST["tWeight"];
-$Gender=$_POST["rbMale"]?1:0;
-$Country=$_POST["tCountry"];
-$City=$_POST["tCity"];
-$Adress=$_POST["tAddress"];
-$Cart=$_POST["tCart_id"];
+        $Firstname = $_POST["tFName"];
+        $Lastname = $_POST["tLName"];
+        $Username = $_POST["tUser"];
+        $Password = $_POST["tPass1"];
+        $Email = $_POST["tEmail"];
+        $Weight = $_POST["tWeight"];
+        $Gender = $_POST["rbMale"];
 
-  
-$query1=" INSERT INTO `user`(`user_name`,`password`) VALUES ('$Username','$Password')
+        $Country = $_POST["tCountry"];
+        $City = $_POST["tCity"];
+        $Adress = $_POST["tAddress"];
+        $Cart = $_POST["tCart_id"];
+
+
+        $query1 = " INSERT INTO `user`(`user_name`,`password`) VALUES ('$Username','$Password')
     ";
- if(!mysql_query($query1)){
-        
-  die('Error: ' . mysql_error());
-}
-$query2=" INSERT INTO  `points` (  `clt_card_id` ) 
+        if (!mysql_query($query1)) {
+
+            die('Error: ' . mysql_error());
+        }
+        $query2 = " INSERT INTO  `Days` (  `clt_card_id` ) 
 VALUES ('$Cart')";
 
 
-  if (!mysql_query($query2))
-  {
-  die('Error: ' . mysql_error());
-  }
-  
-  $user_id=  mysql_insert_id();
-  $query=" INSERT INTO  `clients` (  `clt_card_id` ,  `clt_Fname` ,  `clt_Lname` ,  `clt_email` ,  `clt_adresse` ,  `clt_weight` ,  `clt_gender` ,  `clt_country` ,  `clt_city` , `clt_datesubsc` ,  `clt_pwd` ) 
+        if (!mysql_query($query2)) {
+            die('Error: ' . mysql_error());
+        }
+
+
+        $query = " INSERT INTO  `clients` (  `clt_card_id` ,  `clt_Fname` ,  `clt_Lname` ,  `clt_email` ,  `clt_adresse` ,  `clt_weight` ,  `clt_gender` ,  `clt_country` ,  `clt_city` , `clt_datesubsc` ,  `clt_pwd` ) 
 VALUES (
 '$Cart',  '$Firstname',  '$Lastname',  '$Email',  '$Adress',  '$Weight',  '$Gender',  '$Country',  '$City', CURDATE( ) ,  '$Password'
 )";
-  
 
-  if (!mysql_query($query)){
-      die('Error:'.  mysqlsql_error($connex));
-  }
- 
-    ?>  
-      
-      
-      <div style="position:absolute;top:45%;left:75px"/>
-<h4> " registration successful ! "  </h4>
-<br>
-  
- <b>   <h4>
- <a href='Home.php'>Click here to go home...</a>
-        
- </h4></b>
 
-    <?
- mysql_close($connex);
- 
-  ?>    
+        if (!mysql_query($query)) {
+            die('Error:' . mysql_error($connex));
+        }
+
+
+        $user_id = mysql_insert_id();
+
+
+
+        $query4 = "INSERT INTO `clt_subscription`(`card_id`, `clt_join_date`) 
+     VALUES ($Cart,curdate())";
+        if (!mysql_query($query4)) {
+            die('Error:' . mysql_error($connex));
+        }
+        ?>  
+
+
+        <div style="position:absolute;top:45%;left:75px"/>
+        <h4> " registration successful ! "  </h4>
+        <br>
+
+            <b>   <h4>
+                    <a href='Home.php'>Click here to go home...</a>
+
+                </h4></b>
+
+            <?
+            mysql_close($connex);
+            ?>    
 
 

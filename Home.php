@@ -73,18 +73,23 @@ include('mygymdbConnect.php');
         
         <div style="position:absolute;top:600px;left:100px"\>
 
-<form  action="signinverification.php" method="post">
+<form  action="signinverification.php " method="post">
 <?php 
 echo"<div style='position:absolute;top:50px;left:50px '>";
 echo "<table width='200px'cellpadding='7' cellspacing='10' > <Caption>";
+
 if(isset($_SESSION['user']) and $_SESSION['user']!="" ){
+     $_SESSION['name']=$_SESSION['user'];
+     
     echo " <b>Welcome To MYGYM dear </b>" .$_SESSION['user'] ;
+   
+    
 echo '</div>';}
-else
-		echo "Connect to benefit from our services";	
+else{
+echo "Connect to benefit from our services";}	
 		echo "</caption>";
 if(isset($_SESSION['user']) and $_SESSION['user']!="" )
-	echo "
+	echo "<form method='post' action='trainbytrainer.php'>
 	<input name='user' id='user' type='hidden' value='Username'/>
 	<input name='pass'id='pass'type='hidden' value='password'/>
 	<tr>
@@ -96,11 +101,12 @@ if(isset($_SESSION['user']) and $_SESSION['user']!="" )
 </table>
 <div style='position:absolute;top:100px;left:50px '>
 <table cellpadding='100' cellspacing='100'>
-<th><a href='buypoints.php'>Buy Days</a>
+<th><a href='bmicalc.php'>Calculate your bmi</a>
 <th><a href='workout.php'>Workout</a>
 <th><a href='classes.html'>Classes Schedule</a>
 
-</div> "
+<th><a href='trainbytrainer.php'>Workout assigned by Trainer</a>
+</div> </form>"
     
     
     
@@ -137,8 +143,8 @@ echo"
         
    <div id="footer-content" class="container" style="position: absolute;top:400px;left: 50px ">
 	<div id="footer-bg">
-            
-            <div id="column3"style="position: absolute;top:-100px;left: 0px ">
+            <div id="column5"style="position: absolute;top:-150px;left:220px "><a href="buypoints.php"><h4>Buy days</a></h4></div>
+            <div id="column3"style="position: absolute;top:-50px;left: 0px ">
                 Useful links<table width="500px" cellpadding="10px" height="250px" align="center">
                     <tr>
                         <td><b><a href="http://www.webmd.com/diet/default.htm">Diet and Weight loss</a></b></td>
@@ -153,7 +159,7 @@ echo"
                 </table>
                 
             
-		<div id="column1" style="position: absolute; width: 600px;top:450px;left: 100px">
+		<div id="column1" style="position: absolute; width: 400px;top:450px;left: 100px">
                        
                         <table cellspacing="10" cellpading="10" align="center">
                             <tr><th> Contact us via social media </th>

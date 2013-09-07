@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 08, 2013 at 08:48 PM
--- Server version: 5.5.24
+-- Generation Time: Aug 27, 2013 at 10:17 PM
+-- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -30,11 +31,6 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `password` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `admin`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -44,24 +40,31 @@ CREATE TABLE IF NOT EXISTS `admin` (
 CREATE TABLE IF NOT EXISTS `clients` (
   `clt_id` int(10) NOT NULL AUTO_INCREMENT,
   `clt_card_id` int(10) NOT NULL,
-  `clt_Fname` varchar(20) NOT NULL,
-  `clt_Lname` varchar(20) NOT NULL,
-  `clt_email` varchar(50) NOT NULL,
-  `clt_adresse` varchar(50) NOT NULL,
+  `clt_Fname` char(20) NOT NULL,
+  `clt_Lname` char(20) NOT NULL,
+  `clt_email` char(50) NOT NULL,
+  `clt_adresse` char(50) NOT NULL,
   `clt_weight` int(11) NOT NULL,
   `clt_gender` bit(11) NOT NULL,
-  `clt_country` varchar(20) NOT NULL,
-  `clt_city` varchar(50) NOT NULL,
+  `clt_country` char(20) NOT NULL,
+  `clt_city` char(50) NOT NULL,
   `clt_datesubsc` date NOT NULL,
-  `clt_trng` tinyint(1) NOT NULL COMMENT 'clt training with or with out supervision of a trainer ',
-  `clt_pwd` varchar(10) NOT NULL,
+  `clt_pwd` char(10) NOT NULL,
   PRIMARY KEY (`clt_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `clients`
 --
 
+INSERT INTO `clients` (`clt_id`, `clt_card_id`, `clt_Fname`, `clt_Lname`, `clt_email`, `clt_adresse`, `clt_weight`, `clt_gender`, `clt_country`, `clt_city`, `clt_datesubsc`, `clt_pwd`) VALUES
+(1, 1, 'abed', 'bilani', 'abed.bilani@gmail.com', 'bbb', 60, b'10000111001', 'lb', 'brt', '2013-08-25', ''),
+(2, 0, '', '', '', '', 0, b'10000111000', '', '', '2013-08-26', ''),
+(3, 13, 'as', 'b', '1222', 'sdsd', 60, b'10000111000', 'lb', 'brt', '2013-08-26', '123'),
+(4, 13, 'as', 'b', '1222', 'sdsd', 60, b'10000111000', 'lb', 'brt', '2013-08-26', '123'),
+(5, 13, 'as', 'b', '1222', 'sdsd', 60, b'00000000000', 'lb', 'brt', '2013-08-26', '123'),
+(6, 13, 'as', 'b', '1222', 'sdsd', 60, b'00000000000', 'lb', 'brt', '2013-08-26', '123'),
+(7, 222, 'value 1', 'ass', 'abed.bilani@gmail.com', 'asddas', 50, b'01000110000', 'lb', 'brt', '2013-08-26', '123');
 
 -- --------------------------------------------------------
 
@@ -81,6 +84,36 @@ CREATE TABLE IF NOT EXISTS `clt_subscription` (
 -- Dumping data for table `clt_subscription`
 --
 
+INSERT INTO `clt_subscription` (`card_id`, `clt_join_date`, `clt_days`, `clt_subscriptionType_id`) VALUES
+(1, '2013-08-25', 12, 2),
+(13, '2013-08-26', 0, 0),
+(222, '2013-08-26', 8, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `days`
+--
+
+CREATE TABLE IF NOT EXISTS `days` (
+  `clt_id` int(10) NOT NULL AUTO_INCREMENT,
+  `clt_card_id` int(11) NOT NULL,
+  `clt_days` int(11) NOT NULL,
+  PRIMARY KEY (`clt_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `days`
+--
+
+INSERT INTO `days` (`clt_id`, `clt_card_id`, `clt_days`) VALUES
+(1, 1, 12),
+(2, 0, 0),
+(3, 13, 0),
+(4, 13, 0),
+(5, 13, 0),
+(6, 13, 0),
+(7, 222, 8);
 
 -- --------------------------------------------------------
 
@@ -113,8 +146,8 @@ INSERT INTO `exercises` (`exercise_id`, `shoulder`, `chest`, `bic_tric`, `under-
 --
 
 CREATE TABLE IF NOT EXISTS `subscription_type` (
-  `Subscription_type` int(11) NOT NULL,
-  `Subscription_name` int(11) NOT NULL COMMENT 'its about the package wish the clt choose for trng'
+  `Subscription_type` int(50) NOT NULL,
+  `Subscription_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -122,9 +155,9 @@ CREATE TABLE IF NOT EXISTS `subscription_type` (
 --
 
 INSERT INTO `subscription_type` (`Subscription_type`, `Subscription_name`) VALUES
-(1, 10),
-(2, 30),
-(3, 90);
+(1, 'daily'),
+(2, 'weekly'),
+(3, 'monthly');
 
 -- --------------------------------------------------------
 
@@ -139,11 +172,6 @@ CREATE TABLE IF NOT EXISTS `trainer` (
   `tr_pwd` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `trainer`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -153,13 +181,23 @@ CREATE TABLE IF NOT EXISTS `trainer` (
 CREATE TABLE IF NOT EXISTS `user` (
   `user_name` varchar(10) NOT NULL,
   `password` varchar(10) NOT NULL,
-  `user_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `user_id` int(10) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `user`
 --
 
+INSERT INTO `user` (`user_name`, `password`, `user_id`) VALUES
+('test', '123', 1),
+('test', '', 2),
+('', '', 3),
+('b', '123', 4),
+('b', '123', 5),
+('b', '123', 6),
+('b', '123', 7),
+('b', '123', 8);
 
 -- --------------------------------------------------------
 
@@ -168,34 +206,43 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 CREATE TABLE IF NOT EXISTS `workout` (
-  `workout_id` int(10) NOT NULL,
-  `id_clt` int(11) NOT NULL,
-  `clt_card_id` int(11) NOT NULL,
-  `1st_exercise` varchar(50) NOT NULL,
-  `2nd_exercise` varchar(50) NOT NULL,
-  `3rd_exercise` varchar(50) NOT NULL
+  `workout_id` int(50) NOT NULL,
+  `workout_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `workout`
 --
 
+INSERT INTO `workout` (`workout_id`, `workout_name`) VALUES
+(1, 'abs-workout2'),
+(1, 'abs-workout1'),
+(1, 'abs-workout3'),
+(2, 'back-workout1'),
+(2, 'back-workout2'),
+(2, 'back-workout3'),
+(2, 'back-workout4'),
+(3, 'biceps-workout1'),
+(3, 'biceps-workout2'),
+(3, 'biceps-workout3'),
+(3, 'biceps-workout4'),
+(4, 'chest-workout1'),
+(4, 'chest-workout2'),
+(4, 'chest-workout3'),
+(4, 'chest-workout4'),
+(5, 'leg-workout1'),
+(5, 'leg-workout2'),
+(5, 'leg-workout3'),
+(5, 'leg-workout4'),
+(6, 'shoulders-workout1'),
+(6, 'shoulders-workout2'),
+(6, 'shoulders-workout3'),
+(6, 'shoulders-workout4'),
+(7, 'triceps-workout1'),
+(7, 'triceps-workout2'),
+(7, 'triceps-workout3'),
+(7, 'triceps-workout4');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `workout_type`
---
-
-CREATE TABLE IF NOT EXISTS `workout_type` (
-  `workout_id_ex` int(11) NOT NULL COMMENT 'workout id to define type for worout',
-  `workout_type` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `workout_type`
---
-
-INSERT INTO `workout_type` (`workout_id_ex`, `workout_type`) VALUES
-(1, 'upper_body'),
-(2, 'lower_body');
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

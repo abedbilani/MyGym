@@ -6,22 +6,22 @@
 <header>
 	<text_header_h1 x_pos="5" y_pos="55" size="19" letter_spacing="0" text_color="FFFFFF">YOUR WAY TO SUCCESS</text_header_h1>
 	<text_header_h2 x_pos="10" y_pos="80" size="10" letter_spacing="1.9" text_color="FFFFFF">YOUR OWN SLOGANS AND IMAGES</text_header_h2>	
-	<image blur="no">image\gym2.jpg</image>
+	<image blur="no">images/your_image2.jpg</image>
 </header>	
 <header>
 	<text_header_h1 x_pos="90" y_pos="65" size="18" letter_spacing="1.5" text_color="FFFFFF">YOUR  SOLUTIONS</text_header_h1>
 	<text_header_h2 x_pos="91" y_pos="85" size="11" letter_spacing="3.2" text_color="FFFFFF">YOUR WEBSITE SLOGAN</text_header_h2>	
-	<image>image\gym4.jpg</image>
+	<image>images/your_image3.jpg</image>
 </header>	
 <header>
 	<text_header_h1 x_pos="10" y_pos="10" size="23" letter_spacing="0" text_color="FFFFFF">YOUR COMPANY NAME</text_header_h1>
 	<text_header_h2 x_pos="50" y_pos="40" size="14" letter_spacing="5.4" text_color="FFFFFF">YOUR WEBSITE SLOGAN HERE</text_header_h2>	
-	<image>image\gym5.jpg</image>
+	<image>images/your_image.jpg</image>
 </header>	
 <header>
 	<text_header_h1 x_pos="5" y_pos="55" size="19" letter_spacing="0" text_color="FFFFFF">YOUR WAY TO SUCCESS</text_header_h1>
 	<text_header_h2 x_pos="10" y_pos="80" size="10" letter_spacing="1.9" text_color="FFFFFF">YOUR OWN SLOGANS AND IMAGES</text_header_h2>	
-	<image blur="no">image\gym2.jpg</image>
+	<image blur="no">images/your_image2.jpg</image>
 </header>	
 
 

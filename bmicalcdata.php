@@ -49,7 +49,7 @@ Released   : 20120818
         $height=$_POST['height'];
         $bmi=$weight/($height*$height);
         
-        echo '<h4> Your BMI is</h4>  ' . $bmi ;
+        echo "<h4> Your BMI is</h4>  $bmi ";
      
         ?>
         <table width="250px" align="center" cellpadding="10" cellspaccing="10" border="2" style="border-color:  black; " align="center">

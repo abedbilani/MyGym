@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
 Design by Free CSS Templates
-http://www.freecsstemplates.org
+//http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 
 Name       : Open-Air
@@ -10,7 +10,7 @@ Version    : 1.0
 Released   : 20120818
 
 -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"/>
     <?php
     session_start();
     include('mygymdbConnect.php');
@@ -22,8 +22,8 @@ Released   : 20120818
                 <p><h2>MY<br/> 
                         GYM 
                         <br/></h2></p></div>
-            <div style="position: absolute ;left: 180px; top: 340px;"><img  src="images\header2.jpg" height="200" width="750"
-                                                                            /> </div>
+            <div style="position: absolute ;left: 180px; top: 340px;"><img  src="images\header2.jpg" height="200" width="750"></img>
+                                                                             </div>
             <div style="position:absolute;top:37%;left:35%">
                 <link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" />         
 
@@ -49,7 +49,9 @@ Released   : 20120818
                         document.getElementById("tprice").value = "150$";
                     }
                 }</script>-->
-        </head>
+        </head>      
+    </html>
+
         <body onload="getprice();">
 
             <div style="position: absolute;top: 650px;left: 100px;">
@@ -59,7 +61,8 @@ Released   : 20120818
                     <table>
                         <tr>
                             <td><b>Choose your subscription </b></td>
-                            <td><?php
+                            <td><?php 
+                          
                                 $query = mysql_query("SELECT `Subscription_type`, `Subscription_name` FROM `subscription_type`");
                                 echo "<select name='subscriptype' id='subscriptype' onchange='getprice()' >";
                                 while ($row = mysql_fetch_array($query)) {
@@ -100,5 +103,4 @@ Released   : 20120818
             </div>
         </body>
 
-        
-    </html>
+  
