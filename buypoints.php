@@ -36,19 +36,19 @@ Released   : 20120818
                 <a href="classes.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Classes |</a>
                 <a href="Training.html" style="text-decoration: none;color: black;font:serif;font-weight: bold;  ">Train |</a>   
             </div>
-          <!--  <script language="javascipt">
-                function getprice() {
-                    var prix = document.getElementById("subscriptype").selectedIndex;
-                    if (prix == 0) {
+      <!--     <script language="javascipt">
+            function getprice() {
+                    var type = document.getElementById("subscriptype").selectedIndex;
+                    if (type == 0) {
                         document.getElementById("tprice").value = "20$";
                     }
-                    if (prix == 1) {
+                    if (type == 1) {
                         document.getElementById("tprice").value = "50$";
                     }
-                    if (prix == 2) {
+                    if (type == 2) {
                         document.getElementById("tprice").value = "150$";
                     }
-                }</script>-->
+                }</script><!-->
         </head>      
     </html>
 
@@ -77,7 +77,7 @@ Released   : 20120818
                         </tr>
                         <tr>
                             <td><b>
-                                    Card id </b>
+                                    User id </b>
                             </td>
                             <td><input type="text" id="card_id" name="card_id" required/></td>
                         </tr><tr>

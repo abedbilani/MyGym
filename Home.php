@@ -10,7 +10,7 @@ Version    : 1.0
 Released   : 20120818
 
 -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"/>
 <?php
  session_start();
 include('mygymdbConnect.php');
@@ -72,18 +72,27 @@ include('mygymdbConnect.php');
         </div>
         
         <div style="position:absolute;top:600px;left:100px"\>
-
+</body>
+    </html>
 <form  action="signinverification.php " method="post">
 <?php 
 echo"<div style='position:absolute;top:50px;left:50px '>";
 echo "<table width='200px'cellpadding='7' cellspacing='10' > <Caption>";
 
 if(isset($_SESSION['user']) and $_SESSION['user']!="" ){
-     $_SESSION['name']=$_SESSION['user'];
+     $_SESSION ['name']=$_SESSION ['user'];
+     $name=$_SESSION['user'];
      
-    echo " <b>Welcome To MYGYM dear </b>" .$_SESSION['user'] ;
+    echo " <b>Welcome To MYGYM dear ' $name ' </b> "  ;
+   $query10=  mysql_query("SELECT  `user_id` FROM `user` where user_name='$name'");
+  
    
-    
+   while ($row3 = mysql_fetch_array($query10)) {
+       $clt_id = $row3['user_id']; 
+      $_SESSION['user_id'];
+   }
+   
+   echo "<b><br> Please remember your ID number:$clt_id</b>";
 echo '</div>';}
 else{
 echo "Connect to benefit from our services";}	
@@ -137,7 +146,6 @@ echo"
 	
 	}
 ?>
-
 </form>
 </div>
         
@@ -153,12 +161,8 @@ echo"
                     <tr>
                         <td><b><a href="http://www.totallyfreeworkouts.com/">Free body workout</a></b></td>
                         <td><b><a href="http://www.optimumnutrition.com/">Supplements</a></b></td>
-                    </tr>
-                    
-                        
+                    </tr>        
                 </table>
-                
-            
 		<div id="column1" style="position: absolute; width: 400px;top:450px;left: 100px">
                        
                         <table cellspacing="10" cellpading="10" align="center">
@@ -169,12 +173,7 @@ echo"
                             <th><a href="http://www.gmail.com"><image src="images\gmicon.png" height="35px" width="35px"/></a></th>
                             <th><a href="http://www.twitter.com"><image src="images\twicon.png" height="35px" width="35px"/></a></th>
                             </tr>
-                        </table>                            
-
-                        
-                        
-            
-                
+                        </table>                             
             </div>
         </div>
    </div>
@@ -182,9 +181,6 @@ echo"
         <div id="column2" style="position: absolute;top:700px;left: 100px ">
             <table width="600px">
                 <th>MY GYM    |    Copyright (c) 2013 MYGYM.com    |    All rights reserved.</th>
-            </table>
-            
-		
+            </table>	
    </div>
-    </body>
-</html>
+  

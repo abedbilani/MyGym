@@ -41,16 +41,7 @@ Released   : 20120818
                     <table width="370px" height="100px" cellpadding="10" align="center">
                         <tr>
                             <td><b>Welcome to Training </b><br>
-                                    <b>  please insert your cart ID</b>
-                                </br></td>
-
-                        </tr>
-                        <tr>
-                            <td>
-                                <b> Cart ID</b>
-                            </td>
-                            <td><input type="text" name="id" id="id" required /></td>
-                        </tr>
+                      
                         <tr><td><b>Choose your workout</b></td>
                             <td><select name="workout">
                                     <option value="1" name="abs">ABS</option>

@@ -41,12 +41,17 @@ include('mygymdbConnect.php');
     <div style="position: absolute;top: 450px;left: 250px">
         <?php
         $x = $_SESSION['name'];
+        
+        $query = mysql_query(" SELECT *  FROM `clt_wrkout` where user_name='$x'");
+     
+                  echo 'No workout asigned';  
+    
 
-        $query = mysql_query(" SELECT *  FROM `clt_wrkout`where user_name='$x'");
         while ($row = mysql_fetch_array($query)) {
              $st = $row['first'];
              $nd = $row['second'];
              $thrd = $row['third'];
+            
              echo "<table cellspacing='30' cellpadding='10'>";
              echo "<tr><td>First workout</td>
                  <td><b>$st</b></td></tr>";
@@ -55,7 +60,7 @@ include('mygymdbConnect.php');
                echo "<tr><td>Third workout</td>
                    <td><b>$thrd</b></td></tr>";
                echo "</table>";
-        }
+                  }
         ?>  
     </div>
 </body>

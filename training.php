@@ -42,7 +42,7 @@ Released   : 20120818
 
 
 
- 
+
 
 
 
@@ -59,31 +59,34 @@ Released   : 20120818
                         choose your client
                     </td>
                     <td><?php
-                                $query = mysql_query("SELECT  `user_name`,`user_id` FROM `user`");
-                                echo "<select name='clts' id='clts'  >";
-                                while ($row = mysql_fetch_array($query)) {
-                                   $name  = $row['user_name'];
-                                   $id  = $row['user_id'];
-                                    echo "<option value='$id'>$name </option>";
-                                }
-                                echo "</select>";
-                                ?>
+                        $query = mysql_query("SELECT  * FROM `user`");
+                        echo "<select name='clts' id='clts'  >";
+                        while ($row = mysql_fetch_array($query)) {
+                            $name = $row['user_name'];
+                           
+                            echo "<option value='$name'>$name </option>";
+                        }
+                        echo "</select>";
+                        ?>
                     </td>
                 </tr>
                 <tr><td><b>Assign workout for clients</b></td></tr>
                 <tr>
                     <td>First workout</td>
-                    <td><input type = "text" name = "first"></input></td>
+                    <td><input type = "text" name = "first" required></input></td>
                 </tr>
                 <tr>
                     <td>Second workout</td>
-                    <td><input type = "text" name = "second"></input></td>
+                    <td><input type = "text" name = "second" required></input></td>
                 </tr>
                 <tr>
                     <td>Third workout</td>
-                    <td><input type = "text" name = "third"></input></td>
-                </tr>
-            </table></div>
+                    <td><input type = "text" name = "third" required></input></td>
+                </tr> 
+                <tr><td><input type="submit"/></td></tr>
+            </table>
+
+        </div>
 
 
 
