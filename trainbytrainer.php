@@ -44,7 +44,7 @@ include('mygymdbConnect.php');
         
         $query = mysql_query(" SELECT *  FROM `clt_wrkout` where user_name='$x'");
      
-                  echo 'No workout asigned';  
+                 
     
 
         while ($row = mysql_fetch_array($query)) {
