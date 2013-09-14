@@ -33,3 +33,10 @@ sign in
 sign in as coac,trainings that you choose body part to train
 
 
+references:
+for workouts: www.bodybuilding.com
+for images : www.google.com
+for muscles anatomy: www.innerbody.com
+
+
+By : Abed El aziz Bilani
