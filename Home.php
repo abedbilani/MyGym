@@ -144,6 +144,7 @@ echo"
 	echo "<input type='submit' value='   Log In' />";
 	
 	}
+        mysql_close($connex);
 ?>
 </form>
 </div>

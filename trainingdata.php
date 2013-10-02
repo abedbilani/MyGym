@@ -34,7 +34,7 @@ $wrkout2 = $_POST['second'];
 $wrkout3 = $_POST['third'];
 
 $query = "UPDATE `clt_wrkout` SET( `first`, `second`, `third`) VALUES 
-    ('$wrkout1','$wrkout2','$wrkout3'WHERE WHERE=$user)";
+    ('$wrkout1','$wrkout2','$wrkout3'WHERE `user_name`=$user)";
 if (!mysql_query($query)) {
     die('Error: ' . mysql_error());
 }
