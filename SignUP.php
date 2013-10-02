@@ -78,7 +78,7 @@ VALUES (
 
 
 
-        $query4 = "INSERT INTO `clt_subscription`(`card_id`, `clt_join_date`) 
+        $query4 = "INSERT INTO `clt_subscription`(`clt_id`, `clt_join_date`) 
      VALUES ($Cart,curdate())";
         if (!mysql_query($query4)) {
             die('Error:' . mysql_error($connex));
