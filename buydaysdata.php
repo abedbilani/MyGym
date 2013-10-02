@@ -6,7 +6,7 @@ $card = $_POST['card_id'];
 $day = $_POST['day'];
 
 
-$query = "UPDATE  `clt_subscription` SET `clt_days`= $day ,
+$query = "UPDATE  `clt_subscription` SET `clt_days`= `clt_days`+$day ,
     `clt_subscriptionType_id` =$subsc where`clt_id`=$card ";
 
 if (!mysql_query($query)) {
@@ -24,12 +24,10 @@ if (!mysql_query($query)) {
                         $price = $day * 7;
                         echo" $price $ ";
                     }
-
                     if ($subsc == 2) {
                         $price = $day * 5;
                         echo" $price $";
                     }
-
                     if ($subsc == 3) {
                         $price = $day * 3;
                         echo" $price $";
@@ -49,11 +47,8 @@ if (!mysql_query($query)) {
         </table><br>
             <br>
                 </form>
-
-
-
                 </div><?php
-                $query1 = "UPDATE `Days` SET `clt_days`= $day where`clt_id`=$card";
+                $query1 = "UPDATE `Days` SET `clt_days`=`clt_days`+ $day where`clt_id`=$card";
 
                 if (!mysql_query($query1)) {
                     die('ERROR' . mysql_error());

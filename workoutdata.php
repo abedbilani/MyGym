@@ -18,8 +18,7 @@ Released   : 20120818
             <p><h2>MY<br/> 
                     GYM 
                     <br/></h2></p></div>
-        <div style="position: absolute ;left: 150px; top: 250px;"><img  src="images\header2.jpg" height="200" width="750"
-                                                                        />
+        <div style="position: absolute ;left: 150px; top: 250px;"><img  src="images\header2.jpg" height="200" width="750"/>     
             <link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" />         
             <div style="position: absolute ;left: 70px; top: 220px;">
                 <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
@@ -56,7 +55,7 @@ Released   : 20120818
         <div style="position: absolute;top: -200px;left: -50px">
             <!--BEGIN OF TERMS OF USE. DO NOT EDIT OR DELETE THESE LINES. IF YOU EDIT OR DELETE THESE LINES AN ALERT MESSAGE MAY APPEAR WHEN TEMPLATE WILL BE ONLINE-->
 
-            <div id="free-flash-header" >
+            <div id="free-flash-header" style="position: absolute;top: 20px">
                 <strong>free flash banner</strong> on <a href="http://www.freenicetemplates.com/free-flash-animation/flash-banner.htm"><strong>free flash banner</strong></a>
                 <!--END OF TERMS OF USE-->
                 <!-- Add your alternative here -->      
@@ -79,11 +78,12 @@ include ('mygymdbConnect.php');
 $user_id = $_SESSION['user_id'];
 $wrkout = $_POST['workout'];
 $query = mysql_query("SELECT  `clt_days` FROM `clt_subscription` WHERE clt_id='$user_id '");
+
 while ($row = mysql_fetch_array($query)) {
     $day = $row['clt_days'];
     if ($day >= 1) {
         $day = $day - 1;
-        echo "<b>You still have $day days of your subscription</b>";
+        echo "<div style='position:absolute;top:;left:'><b>You still have $day days of your subscription</b>";
         $query1 = "UPDATE `clt_subscription` SET `clt_days`=$day WHERE `clt_id`=$user_id";
         if (!mysql_query($query1)) {
             die('ERROR:' . mysql_error());

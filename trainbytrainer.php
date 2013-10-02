@@ -51,7 +51,7 @@ include('mygymdbConnect.php');
              $st = $row['first'];
              $nd = $row['second'];
              $thrd = $row['third'];
-            
+             echo 'your training assigned by the trainer';
              echo "<table cellspacing='30' cellpadding='10'>";
              echo "<tr><td>First workout</td>
                  <td><b>$st</b></td></tr>";

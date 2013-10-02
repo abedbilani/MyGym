@@ -100,20 +100,19 @@ echo "Connect to benefit from our services";}
 if(isset($_SESSION['user']) and $_SESSION['user']!="" )
 	echo "<form method='post' action='trainbytrainer.php'>
 	<input name='user' id='user' type='hidden' value='Username'/>
-	<input name='pass'id='pass'type='hidden' value='password'/>
+	<input name='pass'id='pass' type='hidden' value='password'/>
 	<tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><input type='submit' value='   Log Out  ' /></td></tr></table>
+      
+        <td><input type='submit' value='Log Out' />
+        </td>
+        </tr></table>
 </table>
+
 <div style='position:absolute;top:100px;left:50px '>
 <table cellpadding='100' cellspacing='100'>
 <th><a href='bmicalc.php'>Calculate your bmi</a>
 <th><a href='workout.php'>Workout</a>
 <th><a href='classes.html'>Classes Schedule</a>
-
 <th><a href='trainbytrainer.php'>Workout assigned by Trainer</a>
 </div> </form>"
     

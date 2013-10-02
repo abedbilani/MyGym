@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `clt_subscription` (
 -- Dumping data for table `clt_subscription`
 --
 
-INSERT INTO `clt_subscription` (`card_id`, `clt_join_date`, `clt_days`, `clt_subscriptionType_id`) VALUES
+INSERT INTO `clt_subscription` (`clt_id`, `clt_join_date`, `clt_days`, `clt_subscriptionType_id`) VALUES
 (1, '2013-08-25', 12, 2),
 (13, '2013-08-26', 0, 0),
 (222, '2013-08-26', 8, 2);

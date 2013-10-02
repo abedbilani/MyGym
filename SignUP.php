@@ -41,7 +41,6 @@ Released   : 20120818
         $Email = $_POST["tEmail"];
         $Weight = $_POST["tWeight"];
         $Gender = $_POST["rbMale"];
-
         $Country = $_POST["tCountry"];
         $City = $_POST["tCity"];
         $Adress = $_POST["tAddress"];
@@ -78,8 +77,8 @@ VALUES (
 
 
 
-        $query4 = "INSERT INTO `clt_subscription`(`clt_id`, `clt_join_date`) 
-     VALUES ($Cart,curdate())";
+        $query4 = "INSERT INTO `clt_subscription`( `clt_join_date`) 
+     VALUES (curdate())";
         if (!mysql_query($query4)) {
             die('Error:' . mysql_error($connex));
         }
